@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Petit test</Text>
+      <Text>coucou Sandrine ! Prête pour le pokédex ?</Text>
     </View>
   );
 }
