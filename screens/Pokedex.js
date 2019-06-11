@@ -1,16 +1,40 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { Text, View } from 'react-native';
+import { Text, View, FlatList } from "react-native";
 
 export default class Pokedex extends Component {
-    render() {
-        return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-              <Text>
-                  Pokedex screen
-              </Text>
-            </View>
-          ); 
-    }
-  
+  state = {
+    pokemons: []
+  }
+
+  componentDidMount = () => {
+      this.getPokemons('https://pokeapi.co/api/v2/pokemon')
+  }
+
+  // méthode pour apeller les pokémons
+  getPokemons = async api => {
+      // on fait une copie du state
+      const pokemons = [ ...this.state.pokemons  ]    
+      // requête
+      const data = await fetch(api)
+      // transform la réponse en JSON et "await" temps que c'est pas fait on ne passe pas à la suite 
+      const json = await data.json()
+      // mise à jour du state
+      await pokemons.push(...json.results)
+      this.setState({ pokemons })
+  } 
+
+  render() {
+    return (
+      <FlatList
+        data={this.state.pokemons}
+        renderItem={({ item }) => (
+          <View>
+            <Text>{item.name}</Text>
+          </View>
+        )}
+        keyExtractor={item => item.name}
+      />
+    );
+  }
 }
