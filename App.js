@@ -1,19 +1,12 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import Pokedex from './screens/Pokedex'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>coucou Sandrine ! Prête pour le pokédex ?</Text>
-    </View>
-  );
+export default class App extends Component {
+  render () {
+    return (
+      <Pokedex />
+    );
+  }
+  
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
