@@ -5,7 +5,8 @@ import {
   View,
   Image,
   TouchableHighlight,
-  StyleSheet
+  StyleSheet,
+  Platform
 } from "react-native";
 
 import Icon from "react-native-vector-icons/Ionicons";
@@ -15,6 +16,7 @@ import { capitalize } from "../utils/helpers";
 
 const ListItem = ({ pokemon }) => {
   const name = capitalize(pokemon.name);
+  const iconName = Platform.OS === 'ios' ? 'ios-arrow-forward' : 'md-arrow-forward'
   
 
   return (
@@ -32,7 +34,7 @@ const ListItem = ({ pokemon }) => {
         </View>
         <View style={styles.arrowContainer}>
           <Icon
-            name={'ios-arrow-forward'}
+            name={iconName}
             size={24}
             style={styles.arrow}
             color={colors.lightText}
