@@ -4,7 +4,7 @@ import { Text, View, FlatList } from "react-native";
 
 import Pokemon from '../components/Pokemon'
 
-import { capitalize } from "../utlils/helpers"
+import { capitalize } from "../utils/helpers"
 
 export default class Pokedex extends Component {
   state = {

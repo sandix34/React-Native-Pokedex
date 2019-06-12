@@ -1,15 +1,76 @@
-import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import React from "react";
 
-class ListItem extends Component {
-    
-    render() { 
-        return ( 
-            <View>
-                <Text>{ this.props.pokemon.name }</Text>
-            </View>
-         );
-    }
-}
- 
+import {
+  Text,
+  View,
+  Image,
+  TouchableHighlight,
+  StyleSheet
+} from "react-native";
+
+import Icon from "react-native-vector-icons/Ionicons";
+
+import colors from "../utils/colors";
+import { capitalize } from "../utils/helpers";
+
+const ListItem = ({ pokemon }) => {
+  const name = capitalize(pokemon.name);
+  
+
+  return (
+    <TouchableHighlight onPress={() => "salut"} underlayColor={colors.underlayray}>
+      <View style={styles.row}>
+        <Image
+          style={styles.sprite}
+          source={{ uri: pokemon.sprites.front_default }}
+        />
+        <View>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.stats}>
+            Weight: {pokemon.weight} | Height: {pokemon.height}
+          </Text>
+        </View>
+        <View style={styles.arrowContainer}>
+          <Icon
+            name={'ios-arrow-forward'}
+            size={24}
+            style={styles.arrow}
+            color={colors.lightText}
+          />
+        </View>
+      </View>
+    </TouchableHighlight>
+  );
+};
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    marginTop:20 
+  },
+  sprite: {
+    width: 48,
+    height: 48,
+    marginRight: 8
+  },
+  name: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: colors.text
+  },
+  stats: {
+    fontSize: 14,
+    color: colors.lightText
+  },
+  arrowContainer: {
+    flex: 1
+  },
+  arrow: {
+    alignSelf: "flex-end"
+  }
+});
+
 export default ListItem;
