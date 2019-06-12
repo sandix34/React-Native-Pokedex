@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import { Text, View, FlatList } from "react-native";
 
+import Pokemon from '../components/Pokemon'
+
 import { capitalize } from "../utlils/helpers"
 
 export default class Pokedex extends Component {
@@ -30,11 +32,7 @@ export default class Pokedex extends Component {
     return (
       <FlatList
         data={this.state.pokemons}
-        renderItem={({ item }) => (
-          <View>
-            <Text>{ capitalize(item.name) }</Text>
-          </View>
-        )}
+        renderItem={({ item }) => <Pokemon name={ item.name }/>}
         keyExtractor={item => item.name}
       />
     );
