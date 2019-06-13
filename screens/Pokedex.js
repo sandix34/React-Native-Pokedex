@@ -7,6 +7,9 @@ import Pokemon from '../components/Pokemon'
 import { capitalize } from "../utils/helpers"
 
 export default class Pokedex extends Component {
+  static navigationOptions = {
+    title: "Pokedex"
+  }
   state = {
     pokemons: []
   }
