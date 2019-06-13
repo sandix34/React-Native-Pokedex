@@ -29,13 +29,17 @@ export default class Pokedex extends Component {
       // mise à jour du state
       await pokemons.push(...json.results)
       this.setState({ pokemons })
-  } 
+  }
+  
+  handlePress = pokemon => {
+    this.props.navigation.navigate('Details', pokemon)
+  }
 
   render() {
     return (
       <FlatList
         data={this.state.pokemons}
-        renderItem={({ item }) => <Pokemon name={ item.name }/>}
+        renderItem={({ item }) => <Pokemon name={ item.name } onPress={ this.handlePress }/>}
         keyExtractor={item => item.name}
       />
     );

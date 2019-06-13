@@ -14,13 +14,13 @@ import Icon from "react-native-vector-icons/Ionicons";
 import colors from "../utils/colors";
 import { capitalize } from "../utils/helpers";
 
-const ListItem = ({ pokemon }) => {
+const ListItem = ({ pokemon, onPress }) => {
   const name = capitalize(pokemon.name);
   const iconName = Platform.OS === 'ios' ? 'ios-arrow-forward' : 'md-arrow-forward'
   
 
   return (
-    <TouchableHighlight onPress={() => "salut"} underlayColor={colors.underlayray}>
+    <TouchableHighlight onPress={onPress} underlayColor={colors.underlayray}>
       <View style={styles.row}>
         <Image
           style={styles.sprite}

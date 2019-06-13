@@ -28,7 +28,7 @@ export default class Pokemon extends Component {
           )
       }
     return (
-      <ListItem pokemon={ this.state.pokemon } />
+      <ListItem pokemon={ this.state.pokemon } onPress={ () => this.props.onPress(this.state.pokemon) } />
     );
   }
 }
