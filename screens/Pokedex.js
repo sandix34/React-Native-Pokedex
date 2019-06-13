@@ -11,7 +11,8 @@ export default class Pokedex extends Component {
     title: "Pokedex"
   }
   state = {
-    pokemons: []
+    pokemons: [],
+    next: ''
   }
 
   componentDidMount = () => {
@@ -28,7 +29,9 @@ export default class Pokedex extends Component {
       const json = await data.json()
       // mise à jour du state
       await pokemons.push(...json.results)
-      this.setState({ pokemons })
+  
+      const next = json.next
+      this.setState({ pokemons, next }) 
   }
   
   handlePress = pokemon => {
@@ -41,6 +44,7 @@ export default class Pokedex extends Component {
         data={this.state.pokemons}
         renderItem={({ item }) => <Pokemon name={ item.name } onPress={ this.handlePress }/>}
         keyExtractor={item => item.name}
+        onEndReached={() => this.getPokemons(this.state.next)}
       />
     );
   }
