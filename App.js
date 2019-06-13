@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Pokedex from './screens/Pokedex'
 
-import { AppNavigator, TabNavigator } from './routes'
+import { TabNavigator, DrawerNavigator } from './routes'
 import { createAppContainer } from 'react-navigation'
 
-const Navigator = createAppContainer(TabNavigator)
+const Navigator = createAppContainer(DrawerNavigator)
  
 export default class App extends Component {
   render () {

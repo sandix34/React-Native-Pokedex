@@ -1,5 +1,5 @@
 import React from 'react'
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
+import { createStackNavigator, createBottomTabNavigator, createDrawerNavigator } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import Pokedex from './screens/Pokedex'
@@ -37,3 +37,26 @@ export const TabNavigator = createBottomTabNavigator(
 
     }
 )
+
+export const DrawerNavigator = createDrawerNavigator(
+    {
+      Pokedex: {
+        screen: AppNavigator,
+        navigationOptions: {
+          tabBarLabel: 'Pokedex'
+        }
+      },
+      Search: {
+        screen: SearchNavigator,
+        navigationOptions: {
+          tabBarLabel: 'Search'
+        }
+      },
+      Id: {
+        screen: IdNavigator,
+        navigationOptions: {
+          tabBarLabel: 'ID'
+        }
+      }
+    }
+  )
